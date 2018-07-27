@@ -5,9 +5,11 @@ import FriendCard from './FriendCard'
 export default class FriendsList extends Component {
   render() {
     return (
-      <div id='FriendsList'>
-        In Friends List
+      <div id='FriendsList' className="column" id="sidebar">
         <SearchFriendList />
+        <FriendCard />
+        <FriendCard />
+        <FriendCard />
         <FriendCard />
       </div>
     )
