@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, only: [:index, :create]
+
+      post "/friend_requests", to: "friend_requests#create"
+      get "/friend_requests/:id", to: "friend_requests#index"
+
     end
   end
 end
