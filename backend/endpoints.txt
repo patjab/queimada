@@ -1,0 +1,17 @@
+[GET]     http://localhost:[PORT]/api/v1/users => All users
+
+[POST]    http://localhost:[PORT]/api/v1/users => Create new user
+          body: {user: {first_name, last_name, email, gender, password}}
+
+[GET]     http://localhost:[PORT]/api/v1/users/:id/friends => All user's  with id= (:id) friends.
+
+[POST]    http://localhost:[PORT]/api/v1/friend_requests => Create a friend request.
+          body: {friend_request: {:requested_user_id, :requester_user_id}}
+
+[GET]     http://localhost:[PORT]/api/v1/friend_requests/:id => All user's with id = (:id) friend requests.
+
+[DELETE]  http://localhost:[PORT]/api/v1/friend_requests/:id/reject => Rejects a friend requests with id = (:id).
+
+[DELETE]  http://localhost:[PORT]/api/v1/friendships/:id => Unfriend someone.
+
+[GET]     http://localhost:[PORT]/api/v1/friend_requests/:id/accept => Accepts a friend requests with id = (:id).

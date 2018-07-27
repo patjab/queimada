@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :create]
       get "/users/:id/friends", to: "friendship#index"
 
+      delete "/friendships/:id", to: "friendship#delete"
+
       post "/friend_requests", to: "friend_requests#create"
       get "/friend_requests/:id", to: "friend_requests#index"
 
