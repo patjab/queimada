@@ -7,16 +7,17 @@ import FriendInfo from './components/FriendInfo'
 import FindFriends from './components/FindFriends'
 
 import SearchFriendList from './components/SearchFriendList'
-
+import InteractiveFriendContainer from './components/InteractiveFriendContainer'
 
 import FriendCard from './components/FriendCard'
 
 class App extends Component {
   render() {
     return (
-      <FriendsList/>
-
-
+      <div className="ui grid" id="App">
+        <FriendsList/>
+        <InteractiveFriendContainer />
+      </div>
     );
   }
 }
