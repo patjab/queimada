@@ -15,6 +15,23 @@ class Api::V1::FriendRequestsController < ApplicationController
     end
   end
 
+  def accept
+    @friend_request = FriendRequest.find(params[:id])
+    user_id = @friend_request.requested_user_id
+    @friend_request.create_friendship
+    @friend_request.destroy
+    requests = User.find(user_id).friend_requests
+    render json: requests, status: :success
+  end
+
+  def delete
+    @friend_request = FriendRequest.find(params[:id])
+    user_id = @friend_request.requested_user_id
+    @friend_request.destroy
+    requests = User.find(user_id).friend_requests
+    render json: requests, status: :success
+  end
+
   private
   def friend_request_params
     params.require(:friend_request).permit(:requested_user_id, :requester_user_id)

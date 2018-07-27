@@ -7,6 +7,9 @@ Rails.application.routes.draw do
       post "/friend_requests", to: "friend_requests#create"
       get "/friend_requests/:id", to: "friend_requests#index"
 
+      delete "/friend_requests/:id/reject", to: "friend_requests#delete"
+      get "/friend_requests/:id/accept", to: "friend_requests#accept"
+
     end
   end
 end
