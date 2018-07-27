@@ -4,7 +4,7 @@ export default class SearchFriendList extends Component {
   render() {
     return (
       <div id="SearchFriendList">
-        In SearchFriendList
+        <input type="text" placeholder="search your friends"/>
       </div>
     )
   }
