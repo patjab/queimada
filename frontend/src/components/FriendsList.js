@@ -3,10 +3,18 @@ import SearchFriendList from './SearchFriendList'
 import FriendCard from './FriendCard'
 
 export default class FriendsList extends Component {
+  state = {
+    displayCriteria: ""
+  }
+
+  getDisplayCriteria = (displayCriteria) => {
+    this.setState({displayCriteria})
+  }
+
   render() {
     return (
       <div id='FriendsList' className="column" id="sidebar">
-        <SearchFriendList />
+        <SearchFriendList displayCriteria={this.getDisplayCriteria}/>
         <FriendCard />
         <FriendCard />
         <FriendCard />
