@@ -1,7 +1,11 @@
 import React, {Component} from 'react'
 
-class FriendCard extends Component {
+export default class FriendCard extends Component {
   render() {
-    return <div></div>
+    return (
+      <div class="FriendCard">
+        In Friend Card
+      </div>
+    )
   }
 }
