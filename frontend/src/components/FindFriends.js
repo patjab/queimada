@@ -1,7 +1,11 @@
 import React, {Component} from 'react'
 
-class FindFriends extends Component {
+export default class FindFriends extends Component {
   render() {
-    return <div></div>
+    return (
+      <div id="FindFriends">
+        In Find Friends
+      </div>
+    )
   }
 }

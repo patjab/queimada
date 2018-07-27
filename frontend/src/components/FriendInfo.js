@@ -1,7 +1,13 @@
 import React, {Component} from 'react'
 
-class FriendInfo extends Component {
+export default class FriendInfo extends Component {
   render() {
-    return <div></div>
+    return (
+      <div id="FriendInfo" class="">
+        Name: ----<br/>
+        E-mail: ----<br/>
+        Gender: ----<br/>
+      </div>
+    )
   }
 }
