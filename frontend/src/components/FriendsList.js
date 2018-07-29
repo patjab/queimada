@@ -8,10 +8,10 @@ export default class FriendsList extends Component {
     friendshipsList: []
   }
 
-  gatherFriendsIntoElements() {
+  gatherFriendsIntoElements = () => {
     return this.state.friendshipsList
     .filter(friendship => friendship.friend.full_name.toLowerCase().includes(this.state.searchByName.toLowerCase()))
-    .map(friendship => <FriendCard friend={friendship.friend} key={friendship.id}/>)
+    .map(friendship => <FriendCard friend={friendship.friend} setToCurrentFriend={this.props.setToCurrentFriend} key={friendship.id}/>)
   }
 
   componentDidMount() {

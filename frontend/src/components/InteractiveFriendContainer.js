@@ -7,7 +7,7 @@ export default class InteractiveFriendContainer extends Component {
     return (
       <div className="column" id="content">
         <br/>
-        <FriendInfo />
+        <FriendInfo currentFriend={this.props.currentFriend}/>
         <FindFriends />
       </div>
     )
