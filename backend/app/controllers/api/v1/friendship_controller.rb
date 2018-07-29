@@ -11,8 +11,9 @@ class Api::V1::FriendshipController < ApplicationController
 
   def delete
     @friendship = Friendship.find_by(id: params[:id])
+    user = @friendship.friend
     if @friendship && @friendship.destroy
-      render json: {success: "Friendship has been ended... :("}, status: :success
+      render json: user, serializer: UserSerializer, status: :success
     end
   end
 end

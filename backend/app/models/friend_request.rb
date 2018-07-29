@@ -4,6 +4,5 @@ class FriendRequest < ApplicationRecord
 
   def create_friendship
     Friendship.create(user_id: self.requested_user_id, friend_id: self.requester_user_id)
-    Friendship.create(user_id: self.requester_user_id, friend_id: self.requested_user_id)
   end
 end
