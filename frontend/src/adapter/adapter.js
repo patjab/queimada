@@ -33,10 +33,21 @@ const getFriendships = (id) => {
   .then(response => response.json())
 }
 
+const getCurrentUser = (token) => {
+  return fetch(`http://localhost:3000/api/v1/current_user`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accepts: 'application/json',
+      Authorization: token
+    }
+  })
+  .then(response => response.json())
+}
+
 export {
   createUser,
   loginUser,
   findUser,
-  getFriendships
+  getFriendships,
+  getCurrentUser
 }
-// {this.state.first_name, this.state.last_name, this.state.email, this.state.password, this.state.password_confirmation}

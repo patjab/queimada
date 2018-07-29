@@ -2,7 +2,7 @@ class Api::V1::AuthController < ApplicationController
   def login
     user = User.find_by(email: params[:auth][:email][:user][:email])
     if user && user.authenticate(params[:auth][:email][:user][:password])
-      render json: { id: user.id, email: user.email }
+      render json: { token: user.id }
     else
       render json: { error: "Auth Failed" }, status: 401
     end

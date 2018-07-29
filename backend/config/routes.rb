@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get "/friend_requests/:id/accept", to: "friend_requests#accept"
 
       post "/auth", to: "auth#login"
+      get "/current_user", to: "auth#get_current_user"
     end
   end
 end
