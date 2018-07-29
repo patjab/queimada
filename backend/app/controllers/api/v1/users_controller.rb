@@ -22,7 +22,8 @@ class Api::V1::UsersController < ApplicationController
     #    for User.new(...).save, it was always rejecting the password and password_confirmation fields that should exist in the params.require(:user) hash.
     #    Password and password_confirmation were present in the outer params hash, but not in the nested params[:user] hash, leading User.new(user_params)
     #    to be processed without the password and subsequently a 422 unprocessable_entity error due to the lack of password.
-    @user = User.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], gender: params[:gender], password: params[:password], password_confirmation: params[:password_confirmation])
+    byebug
+    @user = User.new(user_params)
     if @user.save
       render json: @user, status: :created
     else
@@ -32,7 +33,7 @@ class Api::V1::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :gender)
+    params.require(:user).permit(:first_name, :last_name, :email, :gender, :password, :password_confirmation)
   end
 
   def find_user

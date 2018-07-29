@@ -4,30 +4,27 @@ import {createUser} from '../adapter/adapter'
 
 export default class Signup extends Component {
   state = {
-    first_name: "",
-    last_name: "",
-    email: "",
-    gender: "",
-    password: "",
-    password_confirmation: ""
+    user: {
+      first_name: "",
+      last_name: "",
+      email: "",
+      gender: "",
+      password: "",
+      password_confirmation: ""
+    }
   }
 
   onInputChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
+    const user = this.state.user;
+    user[e.target.name] = e.target.value;
+    this.setState(() => {
+      return {user: user}
     })
   }
 
   submitHandler = (e) => {
     e.preventDefault()
-    this.props.signUp({
-      first_name: this.state.first_name,
-      last_name: this.state.last_name,
-      email: this.state.email,
-      gender: this.state.gender,
-      password: this.state.password,
-      password_confirmation: this.state.password_confirmation
-    })
+    this.props.signUp(this.state)
   }
 
   render() {
