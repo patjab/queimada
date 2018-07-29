@@ -1,32 +1,33 @@
-import React, { Component, Fragment } from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-import FriendsList from './components/FriendsList'
-import FriendInfo from './components/FriendInfo'
-import FindFriends from './components/FindFriends'
+import Signup from './auth/Signup'
+import Queimada from './components/Queimada'
 
-import SearchFriendList from './components/SearchFriendList'
-import InteractiveFriendContainer from './components/InteractiveFriendContainer'
+import {createUser} from './adapter/adapter'
 
-import FriendCard from './components/FriendCard'
+import { Route, Switch } from 'react-router-dom'
+
 
 class App extends Component {
+
+  state = {
+
+  }
+
+  signUp = (signupObj) => {
+    // {this.state.first_name, this.state.last_name, this.state.email, this.state.password, this.state.password_confirmation}
+    createUser(signupObj)
+  }
+
   render() {
     return (
-      <div className="ui grid" id="App">
-        <FriendsList/>
-        <InteractiveFriendContainer />
-      </div>
+      <Switch>
+        <Route path='/signup' render={() => <Signup signUp={this.signUp}/>}/>
+        <Route path={`/user/:id`} component={Queimada}/>
+      </Switch>
     );
   }
 }
 
 export default App;
-
-// <div className="App" className="ui grid">
-//
-//   <FriendsList />
-//   <FriendInfo />
-//   <FindFriends />
-// </div>

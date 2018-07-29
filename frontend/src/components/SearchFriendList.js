@@ -6,12 +6,12 @@ export default class SearchFriendList extends Component {
   }
 
   nameChangeHandler = (e) => {
-    this.setState({searchTerms: e.target.value}, this.props.displayCriteria(this.state.searchTerms))
+    this.setState({searchTerms: e.target.value}, ()=>this.props.getSearchByName(this.state.searchTerms))
   }
 
   render() {
     return (
-      <div id="SearchFriendList" style={{"text-align": "center"}}>
+      <div id="SearchFriendList" style={{"textAlign":"center"}}>
         <br/>
         <input type="text" name="search" placeholder="search your friends" value={this.state.searchTerms} onChange={this.nameChangeHandler}/>
         <br/>
