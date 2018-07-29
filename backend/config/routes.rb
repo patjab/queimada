@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
       delete "/friend_requests/:id/reject", to: "friend_requests#delete"
       get "/friend_requests/:id/accept", to: "friend_requests#accept"
+
+      post "/auth", to: "auth#login"
     end
   end
 end
