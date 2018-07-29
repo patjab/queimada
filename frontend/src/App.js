@@ -22,7 +22,7 @@ class App extends Component {
     loginUser(email, password)
     .then(currentUser => {
       if (currentUser.id !== undefined) {
-        findUser(currentUser.id).then(currentUser => this.setState({currentUser}))
+        findUser(currentUser.id).then(currentUser => this.setState({currentUser: currentUser.user}))
       } else {
         // show something saying that there is no such user
       }
@@ -32,7 +32,7 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <NavigationBar/>
+        <NavigationBar currentUser={this.state.currentUser}/>
         <Switch>
           <Route path='/signup' render={() => <AuthAction submitAuthAction={this.signUp} authType='signup'/>}/>
           <Route path='/login' render={() => <AuthAction submitAuthAction={this.login} authType='login'/>}/>
