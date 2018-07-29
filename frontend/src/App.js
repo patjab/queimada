@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 
 import AuthAction from './auth/AuthAction'
-import Queimada from './components/Queimada'
+import QueimadaContainer from './components/QueimadaContainer'
+import NavigationBar from './components/NavigationBar'
 import {createUser, loginUser, findUser} from './adapter/adapter'
 import { Route, Switch } from 'react-router-dom'
 
@@ -30,11 +31,14 @@ class App extends Component {
 
   render() {
     return (
-      <Switch>
-        <Route path='/signup' render={() => <AuthAction submitAuthAction={this.signUp} authType='signup'/>}/>
-        <Route path='/login' render={() => <AuthAction submitAuthAction={this.login} authType='login'/>}/>
-        <Route path={`/user/:id`} component={Queimada}/>
-      </Switch>
+      <Fragment>
+        <NavigationBar/>
+        <Switch>
+          <Route path='/signup' render={() => <AuthAction submitAuthAction={this.signUp} authType='signup'/>}/>
+          <Route path='/login' render={() => <AuthAction submitAuthAction={this.login} authType='login'/>}/>
+          <Route path={`/user/:id`} component={QueimadaContainer}/>
+        </Switch>
+      </Fragment>
     );
   }
 }
