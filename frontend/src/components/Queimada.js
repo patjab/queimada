@@ -10,7 +10,7 @@ export default class Queimada extends Component {
   setToCurrentFriend = (currentFriend) => {
     this.setState({currentFriend})
   }
-  
+
   render() {
     return (
       <div className="ui grid" id="App">

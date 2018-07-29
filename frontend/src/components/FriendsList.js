@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import SearchFriendList from './SearchFriendList'
 import FriendCard from './FriendCard'
+import {getFriendships} from '../adapter/adapter'
 
 export default class FriendsList extends Component {
   state = {
@@ -15,9 +16,7 @@ export default class FriendsList extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3000/api/v1/users/${this.props.userId}/friends`)
-    .then(response => response.json())
-    .then(data => this.setState({friendshipsList: data.friendship}))
+    getFriendships(this.props.userId).then(data => this.setState({friendshipsList: data.friendship}))
   }
 
   getSearchByName = (searchByName) => {
