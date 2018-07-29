@@ -1,25 +1,31 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import FriendsList from './components/FriendsList'
-import InteractiveFriendContainer from './components/InteractiveFriendContainer'
+import Signup from './auth/Signup'
+import Queimada from './components/Queimada'
+
+import {createUser} from './adapter/adapter'
+
+import { Route, Switch } from 'react-router-dom'
+
 
 class App extends Component {
+
   state = {
-    currentFriend: {}
+
   }
 
-  setToCurrentFriend = (currentFriend) => {
-    this.setState({currentFriend})
+  signUp = (signupObj) => {
+    // {this.state.first_name, this.state.last_name, this.state.email, this.state.password, this.state.password_confirmation}
+    createUser(signupObj)
   }
 
   render() {
-    console.log()
     return (
-      <div className="ui grid" id="App">
-        <FriendsList userId={this.props.match.params.id} setToCurrentFriend={this.setToCurrentFriend}/>
-        <InteractiveFriendContainer currentFriend={this.state.currentFriend}/>
-      </div>
+      <Switch>
+        <Route path='/signup' render={() => <Signup signUp={this.signUp}/>}/>
+        <Route path={`/user/:id`} component={Queimada}/>
+      </Switch>
     );
   }
 }

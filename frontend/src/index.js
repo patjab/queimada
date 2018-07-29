@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 // import './index.css';
 
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 import './static/dist/semantic-ui/semantic.min.css'
 import './static/stylesheets/default.css'
@@ -13,8 +13,10 @@ import registerServiceWorker from './registerServiceWorker'
 
 ReactDOM.render(
   <BrowserRouter>
-    <Route path={`/user/:id`} component={App}/>
+    <App/>
   </BrowserRouter>
   ,
   document.getElementById('root'));
 registerServiceWorker();
+
+// http://localhost:[PORT]/api/v1/users
