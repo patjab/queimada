@@ -16,7 +16,7 @@ export default class FriendsList extends Component {
   }
 
   componentDidMount() {
-    if ( localStorage.getItem('token') && this.props.currentUser.id) {
+    if ( localStorage.getItem('token') && this.props.currentUser) {
       getFriendships(this.props.currentUser.id, localStorage.getItem('token')).then(data => {
         this.setState({friendshipsList: data.friendship})
       })
