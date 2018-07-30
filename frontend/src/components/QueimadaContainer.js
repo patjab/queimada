@@ -39,8 +39,6 @@ export default class QueimadaContainer extends Component {
         }
       }));
     }
-
-
   }
 
 

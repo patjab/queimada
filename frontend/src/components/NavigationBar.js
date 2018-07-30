@@ -25,6 +25,9 @@ export default class NavigationBar extends Component {
                     return (
                       <div className="ui item huge" key={friendRequest.id}>
                         <div>
+                          <img src={friendRequest.requester.avatar} alt={friendRequest.requester.full_name}/>
+                        </div>
+                        <div>
                           {friendRequest.requester.full_name}
                         </div>
                         <div>
@@ -41,7 +44,6 @@ export default class NavigationBar extends Component {
               </div>
 
             </div>
-
 
               <a className="item" href='/users'>Home</a>
               <a className="item">Settings</a>
@@ -64,15 +66,3 @@ export default class NavigationBar extends Component {
     )
   }
 }
-
-
-// <div className="ui item pointing dropdown link">
-//   <span className="text">Shopping</span>
-//   <i className="dropdown icon"></i>
-//   <div className="menu">
-//     <div className="item">Home Goods</div>
-//     <div className="item">Bedroom</div>
-//     <div className="item">Status</div>
-//     <div className="item">Cancellations</div>
-//   </div>
-// </div>
