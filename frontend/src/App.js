@@ -7,7 +7,7 @@ import NavigationBar from './components/NavigationBar'
 import { createUser, loginUser, getCurrentUser } from './adapter/adapter'
 import { Route, Switch, withRouter} from 'react-router-dom'
 
-import {getAllUsers, getFriendships} from './adapter/adapter'
+import {getAllUsers } from './adapter/adapter'
 
 
 class App extends Component {
@@ -27,32 +27,6 @@ class App extends Component {
       })
     }
   }
-
-    // getAllUsers().then(allUsers => {
-    //   this.setState({allUsers: allUsers.users}, () => {
-    //     if ( localStorage.getItem('token') ) {
-    //       getCurrentUser(localStorage.getItem('token')).then(user => {
-    //         this.setState({currentUser: user.user}, () => {
-    //           getFriendships(this.state.currentUser.id, localStorage.getItem('token'))
-    //           .then(friendships => friendships.friendship.map(friendship => friendship.friend))
-    //           .then(data => this.setState({currentUserFriends: data}, ()=>{
-    //             const allUsers = this.state.allUsers
-    //             const allFriends = this.state.currentUserFriends
-    //             if ( allUsers.length > 0 && allFriends.length > 0) {
-    //               const friendIds = allFriends.map(friend => friend.id)
-    //               friendIds.push(this.state.currentUser.id)
-    //               const suggestions = allUsers.filter(user => {
-    //                 return !friendIds.includes(user.id)
-    //               })
-    //               this.setState({friendSuggestions: suggestions})
-    //             }
-    //           }));
-    //         })
-    //       })
-    //     }
-    //   })
-    // })
-
 
   signUp = (signupObj) => {
     createUser(signupObj)

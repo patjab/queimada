@@ -6,42 +6,6 @@ export default class FindFriends extends Component {
     suggestions: []
   }
 
-  // Experimenting
-  componentDidMount() {
-    // fetch(`http://localhost:3000/api/v1/users`)
-    // .then(response => response.json())
-    // .then(data => {
-    //   this.setState({allUsers: data}, ()=>{
-    //     const allUsers = this.state.allUsers.users
-    //     const allFriends = this.props.friendshipsList.map(friendship => friendship.friend)
-    //     if ( allUsers.length > 0 && allFriends.length > 0) {
-    //       const friendIds = allFriends.map(friend => friend.id)
-    //       friendIds.push(this.props.currentUser.id)
-    //       const suggestions = allUsers.filter(user => {
-    //         return !friendIds.includes(user.id)
-    //       })
-    //       this.setState({suggestions: suggestions})
-    //     }
-    //   })
-    // })
-
-  }
-
-  componentDidUpdate() {
-    // const allUsers = this.state.allUsers.users
-    // const allFriends = this.props.friendshipsList.map(friendship => friendship.friend)
-    // if ( allUsers.length > 0 && allFriends.length > 0) {
-    //   const friendIds = allFriends.map(friend => friend.id)
-    //   friendIds.push(this.props.currentUser.id)
-    //   const suggestions = allUsers.filter(user => {
-    //     return !friendIds.includes(user.id)
-    //   })
-    //   this.setState({suggestions})
-    //
-    // }
-
-  }
-
   render() {
     return (
       <div className="row" id="FindFriends">

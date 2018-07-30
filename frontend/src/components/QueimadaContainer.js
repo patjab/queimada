@@ -9,20 +9,8 @@ export default class QueimadaContainer extends Component {
     currentFriend: {},
     friendSuggestions: [],
     currentUserFriends: []
-    // friendshipsList: []
-    // Pass this down later in lieu of the lower friendshipList in FriendList
   }
 
-  // Pass this down later in lieu of the lower friendshipList in FriendList
-  // componentDidMount() {
-  //   if ( localStorage.getItem('token') && this.props.currentUser) {
-  //     getFriendships(this.props.currentUser.id, localStorage.getItem('token')).then(data => {
-  //       this.setState({friendshipsList: data.friendship}, ()=> {
-  //       })
-  //     })
-  //   }
-  //
-  // }
 
   componentDidMount() {
     if (this.props.currentUser ){
