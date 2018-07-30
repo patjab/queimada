@@ -13,7 +13,6 @@ export default class QueimadaContainer extends Component {
 
   addNewFriend = (friend) => {
     createFriendRequest(friend.id, this.props.currentUser.id, localStorage.getItem('token'))
-    .then(data => console.log("FRIEND REQUEST CREATED", data))
   }
 
   componentDidMount() {
@@ -30,7 +29,6 @@ export default class QueimadaContainer extends Component {
           allExcludedIds.push(this.props.currentUser.id)
           allExcludedIds.push(...friendRequestsId1)
           allExcludedIds.push(...friendRequestsId2)
-          console.log(allExcludedIds)
           const suggestions = allUsers.filter(user => {
             return !allExcludedIds.includes(user.id)
           })

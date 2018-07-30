@@ -108,11 +108,6 @@ const getMyFriendRequests = (id, token) => {
   .then(res => res.json())
 }
 
-
-// [DELETE]  http://localhost:[PORT]/api/v1/friend_requests/:id/reject => Rejects a friend requests with id = (:id).
-//
-// [GET]     http://localhost:[PORT]/api/v1/friend_requests/:id/accept => Accepts a friend requests with id = (:id).
-
 export {
   createUser,
   loginUser,
