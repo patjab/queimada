@@ -4,7 +4,7 @@ class Api::V1::AuthController < ApplicationController
     if user && user.authenticate(params[:auth][:email][:user][:password])
       render json: { token: user.id }
     else
-      render json: { error: "Auth Failed" }, status: 401
+      render json: { error: "Login credentials are incorrect" }, status: 401
     end
   end
 

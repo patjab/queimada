@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 
 export default class NavigationBar extends Component {
   render() {
-    console.log(this.props)
     return (
       <div className="ui inverted huge borderless fixed fluid menu">
       <a className="header item">Queimada</a>
@@ -10,7 +9,7 @@ export default class NavigationBar extends Component {
 
         {this.props.currentUser ?
           <Fragment>
-            <a className="item" href={`/users/${this.props.currentUser.user.id}`}>Home</a>
+            <a className="item" href='/users'>Home</a>
             <a className="item">Settings</a>
             <a className="item">Messages</a>
             <a className="item">Help</a>
@@ -30,10 +29,3 @@ export default class NavigationBar extends Component {
     )
   }
 }
-
-// RIGHT ABOUT THE TERNARY
-// <div className="item">
-//   <div className="ui small input">
-//     <input placeholder="Search..." />
-//   </div>
-// </div>

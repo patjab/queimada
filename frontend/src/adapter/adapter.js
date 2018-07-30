@@ -8,7 +8,6 @@ const createUser = (signupObj) => {
     body: JSON.stringify(signupObj)
   })
   .then(response => response.json())
-  .then(data => data.user)
 }
 
 const loginUser = (email, password) => {

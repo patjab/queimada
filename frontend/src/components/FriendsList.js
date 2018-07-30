@@ -16,7 +16,9 @@ export default class FriendsList extends Component {
   }
 
   componentDidMount() {
-    getFriendships(this.props.userId).then(data => this.setState({friendshipsList: data.friendship}))
+    if ( localStorage.getItem('token') ) {
+      getFriendships(localStorage.getItem('token')).then(data => this.setState({friendshipsList: data.friendship}))
+    }
   }
 
   getSearchByName = (searchByName) => {

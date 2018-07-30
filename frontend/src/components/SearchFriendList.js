@@ -12,10 +12,11 @@ export default class SearchFriendList extends Component {
   render() {
     return (
       <div id="SearchFriendList" style={{"textAlign":"center"}}>
-        <br/>
-        <input type="text" name="search" placeholder="search your friends" value={this.state.searchTerms} onChange={this.nameChangeHandler}/>
-        <br/>
-        <br/>
+        <div className="ui huge header">Friends List</div>
+        <div className="ui input fluid">
+          <input type="text" className="" name="search" placeholder="search your friends" value={this.state.searchTerms} onChange={this.nameChangeHandler}/>
+        </div>
+        <div className="ui horizontal divider"></div>
       </div>
     )
   }

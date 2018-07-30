@@ -10,7 +10,8 @@ import { Route, Switch, withRouter} from 'react-router-dom'
 
 class App extends Component {
   state = {
-    currentUser: null
+    currentUser: null,
+    errors: null
   }
 
   componentDidMount() {
@@ -24,12 +25,16 @@ class App extends Component {
   signUp = (signupObj) => {
     createUser(signupObj)
     .then(data => {
-      getCurrentUser(data.token).then(user => {
-        this.setState({currentUser: user}, () => {
-          localStorage.setItem('token', data.token)
-          this.props.history.push(`/users/${data.token}`)
+      if (!data.errors) {
+        getCurrentUser(data.token).then(user => {
+          this.setState({currentUser: user}, () => {
+            localStorage.setItem('token', data.token)
+            this.props.history.push(`/users`)
+          })
         })
-      })
+      } else {
+        this.setState({errors: data.errors})
+      }
     })
   }
 
@@ -40,17 +45,17 @@ class App extends Component {
         getCurrentUser(data.token).then(user => {
           this.setState({currentUser: user}, () => {
             localStorage.setItem('token', data.token)
-            this.props.history.push(`/users/${data.token}`)
+            this.props.history.push(`/users`)
           })
         })
       } else {
-        // show something saying that there is no such user
+        this.setState({errors: data.error})
       }
     })
   }
 
   logout = () => {
-    localStorage.removeItem('current_user')
+    localStorage.removeItem('token')
     this.setState({currentUser: null})
     this.props.history.push('/login')
   }
@@ -60,9 +65,9 @@ class App extends Component {
       <Fragment>
         <NavigationBar logout={this.logout} currentUser={this.state.currentUser}/>
         <Switch>
-          <Route path='/signup' render={() => <AuthAction submitAuthAction={this.signUp} authType='signup'/>}/>
-          <Route path='/login' render={() => <AuthAction submitAuthAction={this.login} authType='login'/>}/>
-          <Route path={`/users/:id`} component={QueimadaContainer}/>
+          <Route path='/signup' render={() => <AuthAction submitAuthAction={this.signUp} authType='signup' errors={this.state.errors}/>}/>
+          <Route path='/login' render={() => <AuthAction submitAuthAction={this.login} authType='login' errors={this.state.errors}/>}/>
+          <Route path='/' render={() => <QueimadaContainer currentUser={this.state.currentUser}/>}/>
         </Switch>
       </Fragment>
     );
