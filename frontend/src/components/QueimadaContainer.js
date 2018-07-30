@@ -13,6 +13,9 @@ export default class QueimadaContainer extends Component {
 
   addNewFriend = (friend) => {
     createFriendRequest(friend.id, this.props.currentUser.id, localStorage.getItem('token'))
+    .then(data => {
+      this.setState({friendSuggestions: this.state.friendSuggestions.filter(friend => data.friend_request.user_id !== friend.id)})
+    })
   }
 
   componentDidMount() {
