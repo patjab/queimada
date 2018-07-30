@@ -49,10 +49,68 @@ const getCurrentUser = (token) => {
   .then(response => response.json())
 }
 
+const getAllUsers = () => {
+  return fetch(`http://localhost:3000/api/v1/users`)
+  .then(res => res.json())
+}
+
+const createFriendRequest = (requested_user_id, requester_user_id, token) => {
+  const body = {
+    friend_request: {
+      requested_user_id: requested_user_id,
+      requester_user_id: requester_user_id
+    }
+  }
+
+  return fetch(`http://localhost:3000/api/v1/friend_requests`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accepts: 'application/json',
+      Authorization: token
+    },
+      body: JSON.stringify(body)
+    })
+    .then(res => res.json())
+}
+
+const getUsersFriendRequest = (id, token) => {
+  return fetch(`http://localhost:3000/api/v1/friend_requests/${id}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accepts: 'application/json',
+      Authorization: token
+    }
+  })
+  .then(res => res.json())
+}
+
+const rejectFriendRequest = (id) => {
+  return fetch(`http://localhost:3000/api/v1/friend_requests/${id}/reject`, {
+    method: 'DELETE'
+  })
+  .then(res => res.json())
+}
+
+const acceptFriendRequest = (id) => {
+  return fetch(`http://localhost:3000/api/v1/friend_requests/${id}/accept`)
+  .then(res => res.json())
+}
+
+
+// [DELETE]  http://localhost:[PORT]/api/v1/friend_requests/:id/reject => Rejects a friend requests with id = (:id).
+//
+// [GET]     http://localhost:[PORT]/api/v1/friend_requests/:id/accept => Accepts a friend requests with id = (:id).
+
 export {
   createUser,
   loginUser,
   findUser,
   getFriendships,
-  getCurrentUser
+  getCurrentUser,
+  getAllUsers,
+  createFriendRequest,
+  getUsersFriendRequest,
+  rejectFriendRequest,
+  acceptFriendRequest
 }

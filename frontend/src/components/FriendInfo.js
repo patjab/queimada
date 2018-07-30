@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import FriendInfoCard from './FriendInfoCard'
 
 export default class FriendInfo extends Component {
   render() {
@@ -9,29 +10,7 @@ export default class FriendInfo extends Component {
         <div className="ui link cards float left">
 
         {Object.keys(this.props.currentFriend).length !== 0 ?
-        <div className="card">
-            <div className="image">
-              <img src={this.props.currentFriend.avatar} alt={this.props.currentFriend.full_name}/>
-            </div>
-            <div className="content">
-              <div className="header">{this.props.currentFriend.full_name}</div>
-              <div className="meta">
-                <a>New York, NY</a>
-              </div>
-              <div className="description">
-                {this.props.currentFriend.full_name} is a user living in New York.
-              </div>
-            </div>
-            <div className="extra content">
-              <span className="right floated">
-                Joined in 2013
-              </span>
-              <span>
-                <i className="user icon"></i>
-                75 Friends
-              </span>
-            </div>
-          </div>
+        <FriendInfoCard friend={this.props.currentFriend} />
           :
           <div className="card">
             <div className="content">
