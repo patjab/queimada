@@ -22,14 +22,14 @@ export default class QueimadaContainer extends Component {
       .then(friendships => friendships.friendship.map(friendship => friendship.friend))
       .then(data => this.setState({currentUserFriends: data}, ()=>{
         const friendRequestsId1 = this.props.friendRequests.map(friendRequest => friendRequest.requester.id)
-        // const friendRequestsId2 = this.props.createdFriendRequest.map(friendRequest => friendRequest.requested_user_id)
+        const friendRequestsId2 = this.props.createdFriendRequest.map(friendRequest => friendRequest.user_id)
         const allUsers = this.props.allUsers
         const allFriends = this.state.currentUserFriends
         if ( allUsers.length > 0 && allFriends.length > 0) {
           const allExcludedIds = allFriends.map(friend => friend.id)
           allExcludedIds.push(this.props.currentUser.id)
           allExcludedIds.push(...friendRequestsId1)
-          // allExcludedIds.push(...friendRequestsId2)
+          allExcludedIds.push(...friendRequestsId2)
           console.log(allExcludedIds)
           const suggestions = allUsers.filter(user => {
             return !allExcludedIds.includes(user.id)

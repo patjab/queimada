@@ -97,6 +97,17 @@ const acceptFriendRequest = (id) => {
   .then(res => res.json())
 }
 
+const getMyFriendRequests = (id, token) => {
+  return fetch(`http://localhost:3000/api/v1/my_friend_requests/${id}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accepts: 'application/json',
+      Authorization: token
+    }
+  })
+  .then(res => res.json())
+}
+
 
 // [DELETE]  http://localhost:[PORT]/api/v1/friend_requests/:id/reject => Rejects a friend requests with id = (:id).
 //
@@ -112,5 +123,6 @@ export {
   createFriendRequest,
   getUsersFriendRequest,
   rejectFriendRequest,
-  acceptFriendRequest
+  acceptFriendRequest,
+  getMyFriendRequests
 }

@@ -4,7 +4,7 @@ import './App.css';
 import AuthAction from './auth/AuthAction'
 import QueimadaContainer from './components/QueimadaContainer'
 import NavigationBar from './components/NavigationBar'
-import { createUser, loginUser, getCurrentUser, getUsersFriendRequest, rejectFriendRequest, acceptFriendRequest} from './adapter/adapter'
+import { createUser, loginUser, getCurrentUser, getUsersFriendRequest, getMyFriendRequests, rejectFriendRequest, acceptFriendRequest} from './adapter/adapter'
 import { Route, Switch, withRouter} from 'react-router-dom'
 
 import {getAllUsers } from './adapter/adapter'
@@ -26,13 +26,11 @@ class App extends Component {
     if ( localStorage.getItem('token') ) {
       getCurrentUser(localStorage.getItem('token')).then(user => {
         this.setState({currentUser: user.user}, () => {
-          // Do we even need this
           getUsersFriendRequest(this.state.currentUser.id, localStorage.getItem('token'))
-          .then(data => {
-            this.setState((prev) => {
-              return {friendRequests: data.friend_requests, createdFriendRequest: data.requested}
-            })
-          })
+          .then(data => this.setState({friendRequests: data.friend_requests}))
+
+          getMyFriendRequests(this.state.currentUser.id, localStorage.getItem('token'))
+          .then(data => this.setState({createdFriendRequest: data.friend_requests}))
         })
       })
     }
@@ -40,20 +38,12 @@ class App extends Component {
 
   onReject = (friendRequest) => {
     rejectFriendRequest(friendRequest.id)
-    .then(data => {
-      this.setState((prev) => {
-        return {friendRequests: data.friend_requests, createdFriendRequest: data.requested}
-      })
-    })
+    .then(data => this.setState({friendRequests: data.friend_requests}))
   }
 
   onAccept = (friendRequest) => {
     acceptFriendRequest(friendRequest.id)
-    .then(data => {
-      this.setState((prev) => {
-        return {friendRequests: data.friend_requests, createdFriendRequest: data.requested}
-      })
-    })
+    .then(data => this.setState({friendRequests: data.friend_requests}))
   }
 
   signUp = (signupObj) => {
@@ -83,11 +73,10 @@ class App extends Component {
           })
         }).then(() => {
           getUsersFriendRequest(this.state.currentUser.id, localStorage.getItem('token'))
-          .then(data => {
-            this.setState((prev) => {
-              return {friendRequests: data.friend_requests, createdFriendRequest: data.requested}
-            })
-          })
+          .then(data => this.setState({friendRequests: data.friend_requests}))
+
+          getMyFriendRequests(this.state.currentUser.id, localStorage.getItem('token'))
+          .then(data => this.setState({createdFriendRequest: data.friend_requests}))
         })
       } else {
         this.setState({errors: data.error})
