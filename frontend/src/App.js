@@ -17,7 +17,8 @@ class App extends Component {
     allUsers: [],
     currentUserFriends: [],
     friendSuggestions: [],
-    friendRequests: []
+    friendRequests: [], // not the ones user created
+    createdFriendRequest: [] // the ones user created
   }
 
   componentDidMount() {
@@ -27,7 +28,11 @@ class App extends Component {
         this.setState({currentUser: user.user}, () => {
           // Do we even need this
           getUsersFriendRequest(this.state.currentUser.id, localStorage.getItem('token'))
-          .then(data => this.setState({friendRequests: data.friend_requests}))
+          .then(data => {
+            this.setState((prev) => {
+              return {friendRequests: data.friend_requests, createdFriendRequest: data.requested}
+            })
+          })
         })
       })
     }
@@ -35,12 +40,20 @@ class App extends Component {
 
   onReject = (friendRequest) => {
     rejectFriendRequest(friendRequest.id)
-    .then(data => this.setState({friendRequests: data.friend_requests}))
+    .then(data => {
+      this.setState((prev) => {
+        return {friendRequests: data.friend_requests, createdFriendRequest: data.requested}
+      })
+    })
   }
 
   onAccept = (friendRequest) => {
     acceptFriendRequest(friendRequest.id)
-    .then(data => this.setState({friendRequests: data.friend_requests}))
+    .then(data => {
+      this.setState((prev) => {
+        return {friendRequests: data.friend_requests, createdFriendRequest: data.requested}
+      })
+    })
   }
 
   signUp = (signupObj) => {
@@ -70,7 +83,11 @@ class App extends Component {
           })
         }).then(() => {
           getUsersFriendRequest(this.state.currentUser.id, localStorage.getItem('token'))
-          .then(data => this.setState({friendRequests: data.friend_requests}))
+          .then(data => {
+            this.setState((prev) => {
+              return {friendRequests: data.friend_requests, createdFriendRequest: data.requested}
+            })
+          })
         })
       } else {
         this.setState({errors: data.error})
@@ -91,7 +108,7 @@ class App extends Component {
         <Switch>
           <Route path='/signup' render={() => <AuthAction submitAuthAction={this.signUp} authType='signup' errors={this.state.errors}/>}/>
           <Route path='/login' render={() => <AuthAction submitAuthAction={this.login} authType='login' errors={this.state.errors}/>}/>
-          <Route path='/' component={() => <QueimadaContainer allUsers={this.state.allUsers} currentUser={this.state.currentUser} friendRequests={this.state.friendRequests}/>}/>
+          <Route path='/' component={() => <QueimadaContainer allUsers={this.state.allUsers} currentUser={this.state.currentUser} friendRequests={this.state.friendRequests} createdFriendRequest={this.state.createdFriendRequest}/>}/>
         </Switch>
       </Fragment>
     );

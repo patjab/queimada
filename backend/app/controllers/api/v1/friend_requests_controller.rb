@@ -3,8 +3,7 @@ class Api::V1::FriendRequestsController < ApplicationController
 
   def index
     @friend_requests = User.find(params[:id]).friend_requests
-    @requested = FriendRequest.where(requester_user_id: params[:id])
-    render json: {friend_requests: @friend_requests, requested: @requested}
+    render json: @friend_requests
   end
 
   def create
