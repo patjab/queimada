@@ -19,17 +19,13 @@ export default class QueimadaContainer extends Component {
       .then(data => this.setState({currentUserFriends: data}, ()=>{
         const allUsers = this.props.allUsers
         const allFriends = this.state.currentUserFriends
-
-        console.log("ALL USERS", allUsers)
-        console.log("ALL FRIENDS", allFriends)
-
         if ( allUsers.length > 0 && allFriends.length > 0) {
           const friendIds = allFriends.map(friend => friend.id)
           friendIds.push(this.props.currentUser.id)
           const suggestions = allUsers.filter(user => {
             return !friendIds.includes(user.id)
           })
-          this.setState({friendSuggestions: suggestions}, ()=>console.log(this.state.friendSuggestions))
+          this.setState({friendSuggestions: suggestions})
         }
       }));
     }
