@@ -27,8 +27,14 @@ const findUser = (id) => {
   .then(response => response.json())
 }
 
-const getFriendships = (id) => {
-  return fetch(`http://localhost:3000/api/v1/users/${id}/friends`)
+const getFriendships = (id, token) => {
+  return fetch(`http://localhost:3000/api/v1/users/${id}/friends`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accepts: 'application/json',
+      Authorization: token
+    }
+  })
   .then(response => response.json())
 }
 
