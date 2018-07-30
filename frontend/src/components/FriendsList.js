@@ -1,17 +1,15 @@
 import React, {Component} from 'react'
-import SearchFriendList from './SearchFriendList'
 import FriendCard from './FriendCard'
 import {getFriendships} from '../adapter/adapter'
 
 export default class FriendsList extends Component {
   state = {
-    searchByName: "",
     friendshipsList: []
   }
 
   gatherFriendsIntoElements = () => {
     return this.state.friendshipsList
-    .filter(friendship => friendship.friend.full_name.toLowerCase().includes(this.state.searchByName.toLowerCase()))
+    .filter(friendship => friendship.friend.full_name.toLowerCase().includes(this.props.searchByName.toLowerCase()))
     .map(friendship => <FriendCard friend={friendship.friend} setToCurrentFriend={this.props.setToCurrentFriend} key={friendship.id}/>)
   }
 
@@ -27,8 +25,7 @@ export default class FriendsList extends Component {
 
   render() {
     return (
-      <div className="column" id="sidebar">
-        <SearchFriendList getSearchByName={this.getSearchByName}/>
+      <div>
         {this.gatherFriendsIntoElements()}
       </div>
     )

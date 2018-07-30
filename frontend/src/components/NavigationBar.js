@@ -21,7 +21,7 @@ export default class NavigationBar extends Component {
             <a className="item">Help</a>
             <a className="item" href="/signup">Sign Up</a>
             <a className="item" href="/login">Log In</a>
-            <a className="item">Not Logged In</a>
+            <a className="item" href="/login">Not Logged In</a>
           </Fragment>
         }
       </div>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import FriendsList from './FriendsList'
+import FriendsListContainer from './FriendsListContainer'
 import InteractiveFriendContainer from './InteractiveFriendContainer'
 
 export default class QueimadaContainer extends Component {
@@ -13,8 +13,8 @@ export default class QueimadaContainer extends Component {
 
   render() {
     return (
-      <div className="ui grid" id="QueimadaContainer">
-        <FriendsList currentUser={this.props.currentUser} setToCurrentFriend={this.setToCurrentFriend}/>
+      <div id="QueimadaContainer">
+        <FriendsListContainer currentUser={this.props.currentUser} setToCurrentFriend={this.setToCurrentFriend}/>
         <InteractiveFriendContainer currentFriend={this.state.currentFriend}/>
       </div>
     )
