@@ -6,7 +6,7 @@ export default class FindFriends extends Component {
   showRandomCards = () => {
     if (!!this.props.friendSuggestions) {
       return this.props.friendSuggestions
-      .map(friend => <FriendInfoCard friend={friend} key={friend.id} isSuggested='true'/>)
+      .map(friend => <FriendInfoCard addNewFriend={this.props.addNewFriend} friend={friend} key={friend.id} isSuggested='true'/>)
     }
   }
 

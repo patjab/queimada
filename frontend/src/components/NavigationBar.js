@@ -1,6 +1,11 @@
 import React, { Component, Fragment } from 'react'
+import { getUsersFriendRequest } from '../adapter/adapter'
 
 export default class NavigationBar extends Component {
+  state = {
+    friendRequests: []
+  }
+
   render() {
     return (
       <div className="ui inverted huge borderless fixed fluid menu">
@@ -9,6 +14,9 @@ export default class NavigationBar extends Component {
 
         {this.props.currentUser ?
           <Fragment>
+            <a className="item">Friend Requests
+              { this.props.friendRequests.length === 0 ? null : <a className="ui green circular label">{this.props.friendRequests.length}</a>}
+            </a>
             <a className="item" href='/users'>Home</a>
             <a className="item">Settings</a>
             <a className="item">Messages</a>

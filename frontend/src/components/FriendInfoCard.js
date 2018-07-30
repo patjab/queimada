@@ -22,7 +22,11 @@ export default class FriendInfoCard extends Component {
               <div className="ui hidden fitted divider"></div>
               <div className="ui hidden fitted divider"></div>
               <div className="ui hidden fitted divider"></div>
-              <div className="ui center aligned"><button className="positive ui button">Add Friend</button></div>
+              <div className="ui center aligned">
+                <button className="positive ui button" onClick={() => {
+                  this.props.addNewFriend(this.props.friend)
+                }}>Add Friend</button>
+              </div>
             </div>
              : null }
         </div>
