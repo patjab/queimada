@@ -49,10 +49,16 @@ const getCurrentUser = (token) => {
   .then(response => response.json())
 }
 
+const getAllUsers = () => {
+  return fetch(`http://localhost:3000/api/v1/users`)
+  .then(res => res.json())
+}
+
 export {
   createUser,
   loginUser,
   findUser,
   getFriendships,
-  getCurrentUser
+  getCurrentUser,
+  getAllUsers
 }
