@@ -21,13 +21,18 @@ export default class QueimadaContainer extends Component {
       getFriendships(this.props.currentUser.id, localStorage.getItem('token'))
       .then(friendships => friendships.friendship.map(friendship => friendship.friend))
       .then(data => this.setState({currentUserFriends: data}, ()=>{
+        const friendRequestsId1 = this.props.friendRequests.map(friendRequest => friendRequest.requester.id)
+        const friendRequestsId2 = this.props.friendRequests.map(friendRequest => friendRequest.user_id)
         const allUsers = this.props.allUsers
         const allFriends = this.state.currentUserFriends
         if ( allUsers.length > 0 && allFriends.length > 0) {
-          const friendIds = allFriends.map(friend => friend.id)
-          friendIds.push(this.props.currentUser.id)
+          const allExcludedIds = allFriends.map(friend => friend.id)
+          allExcludedIds.push(this.props.currentUser.id)
+          allExcludedIds.push(...friendRequestsId1)
+          allExcludedIds.push(...friendRequestsId2)
+          console.log(allExcludedIds)
           const suggestions = allUsers.filter(user => {
-            return !friendIds.includes(user.id)
+            return !allExcludedIds.includes(user.id)
           })
           this.setState({friendSuggestions: suggestions})
         }

@@ -69,9 +69,9 @@ const createFriendRequest = (requested_user_id, requester_user_id, token) => {
       Accepts: 'application/json',
       Authorization: token
     },
-    body: JSON.stringify(body)
-  })
-  .then(res => res.json())
+      body: JSON.stringify(body)
+    })
+    .then(res => res.json())
 }
 
 const getUsersFriendRequest = (id, token) => {
@@ -85,6 +85,23 @@ const getUsersFriendRequest = (id, token) => {
   .then(res => res.json())
 }
 
+const rejectFriendRequest = (id) => {
+  return fetch(`http://localhost:3000/api/v1/friend_requests/${id}/reject`, {
+    method: 'DELETE'
+  })
+  .then(res => res.json())
+}
+
+const acceptFriendRequest = (id) => {
+  return fetch(`http://localhost:3000/api/v1/friend_requests/${id}/accept`)
+  .then(res => res.json())
+}
+
+
+// [DELETE]  http://localhost:[PORT]/api/v1/friend_requests/:id/reject => Rejects a friend requests with id = (:id).
+//
+// [GET]     http://localhost:[PORT]/api/v1/friend_requests/:id/accept => Accepts a friend requests with id = (:id).
+
 export {
   createUser,
   loginUser,
@@ -93,5 +110,7 @@ export {
   getCurrentUser,
   getAllUsers,
   createFriendRequest,
-  getUsersFriendRequest
+  getUsersFriendRequest,
+  rejectFriendRequest,
+  acceptFriendRequest
 }
