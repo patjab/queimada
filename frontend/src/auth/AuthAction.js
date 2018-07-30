@@ -42,7 +42,7 @@ export default class AuthAction extends Component {
         <div className="ui horizontal divider"></div>
         <div className="ui horizontal divider"></div>
 
-        <div className="ui input focus centered fluid center aligned grid">
+        <div className="ui input focus centered center aligned grid">
           <form onSubmit={this.submitHandler} className="ui form error huge">
             { this.props.authType === 'signup' ?
             <Fragment>
