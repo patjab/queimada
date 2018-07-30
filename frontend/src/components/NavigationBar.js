@@ -14,7 +14,7 @@ export default class NavigationBar extends Component {
             <a className="item">Messages</a>
             <a className="item">Help</a>
             <a className="item" onClick={this.props.logout}>Logout</a>
-            <a className="item">Logged In: {this.props.currentUser.user.full_name}</a>
+            <a className="item">Logged In: {this.props.currentUser.full_name}</a>
           </Fragment>
           :
           <Fragment>

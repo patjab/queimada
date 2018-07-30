@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import FriendCard from './FriendCard'
-import { getCurrentUser, getFriendships } from '../adapter/adapter'
+import { getFriendships } from '../adapter/adapter'
 
 export default class FriendsList extends Component {
   state = {
@@ -16,7 +16,7 @@ export default class FriendsList extends Component {
   }
 
   componentDidMount() {
-    if ( localStorage.getItem('token') ) {
+    if ( localStorage.getItem('token') && this.props.currentUser.id) {
       getFriendships(this.props.currentUser.id, localStorage.getItem('token')).then(data => {
         this.setState({friendshipsList: data.friendship})
       })

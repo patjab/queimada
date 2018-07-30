@@ -10,14 +10,14 @@ import { Route, Switch, withRouter} from 'react-router-dom'
 
 class App extends Component {
   state = {
-    currentUser: null,
+    currentUser: {},
     errors: null
   }
 
   componentDidMount() {
     if ( localStorage.getItem('token') ) {
       getCurrentUser(localStorage.getItem('token')).then(user => {
-        this.setState({currentUser: user})
+        this.setState({currentUser: user.user})
       })
     }
   }
@@ -27,7 +27,7 @@ class App extends Component {
     .then(data => {
       if (!data.errors) {
         getCurrentUser(data.token).then(user => {
-          this.setState({currentUser: user}, () => {
+          this.setState({currentUser: user.user}, () => {
             localStorage.setItem('token', data.token)
             this.props.history.push(`/users`)
           })
@@ -43,7 +43,7 @@ class App extends Component {
     .then(data => {
       if (!data.error) {
         getCurrentUser(data.token).then(user => {
-          this.setState({currentUser: user}, () => {
+          this.setState({currentUser: user.user}, () => {
             localStorage.setItem('token', data.token)
             this.props.history.push(`/users`)
           })
@@ -67,7 +67,7 @@ class App extends Component {
         <Switch>
           <Route path='/signup' render={() => <AuthAction submitAuthAction={this.signUp} authType='signup' errors={this.state.errors}/>}/>
           <Route path='/login' render={() => <AuthAction submitAuthAction={this.login} authType='login' errors={this.state.errors}/>}/>
-          <Route path='/' render={() => <QueimadaContainer currentUser={this.state.currentUser}/>}/>
+          <Route path='/' component={() => <QueimadaContainer currentUser={this.state.currentUser}/>}/>
         </Switch>
       </Fragment>
     );
