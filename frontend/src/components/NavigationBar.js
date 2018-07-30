@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import { getUsersFriendRequest } from '../adapter/adapter'
 
 export default class NavigationBar extends Component {
   state = {
