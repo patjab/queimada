@@ -15,7 +15,7 @@ export default class FriendsListContainer extends Component {
     return (
       <div className="column" id="sidebar" style={{"overflow":"auto"}}>
         <SearchFriendList getSearchByName={this.getSearchByName}/>
-        <FriendsList currentUser={this.props.currentUser} searchByName={this.state.searchByName} setToCurrentFriend={this.props.setToCurrentFriend}/>
+        <FriendsList currentUserFriendships={this.props.currentUserFriendships} currentUser={this.props.currentUser} searchByName={this.state.searchByName} setToCurrentFriend={this.props.setToCurrentFriend}/>
       </div>
     )
   }

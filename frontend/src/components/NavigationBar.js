@@ -23,17 +23,19 @@ export default class NavigationBar extends Component {
                   { this.props.friendRequests.map(friendRequest => {
                     return (
                       <div className="ui item huge" key={friendRequest.id}>
-                        <div>
+                        <div className="ui left float">
                           <img src={friendRequest.requester.avatar} alt={friendRequest.requester.full_name}/>
                         </div>
                         <div>
-                          {friendRequest.requester.full_name}
-                        </div>
-                        <div>
-                          <div className="ui buttons">
-                            <button className="ui button positive active" onClick={() => this.props.onAccept(friendRequest)}>Accept</button>
-                            <div className="or"></div>
-                            <button className="ui negative button" onClick={() => this.props.onReject(friendRequest)}>🖕 Reject</button>
+                          <div>
+                            {friendRequest.requester.full_name}
+                          </div>
+                          <div>
+                            <div className="ui buttons">
+                              <button className="ui button positive active" onClick={() => this.props.onAccept(friendRequest)}>Accept</button>
+                              <div className="or"></div>
+                              <button className="ui negative button" onClick={() => this.props.onReject(friendRequest)}>🖕 Reject</button>
+                            </div>
                           </div>
                         </div>
                       </div>)

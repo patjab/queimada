@@ -1,5 +1,7 @@
+const BASE_URL = `http://localhost:3000/api/v1`
+
 const createUser = (signupObj) => {
-  return fetch(`http://localhost:3000/api/v1/users`, {
+  return fetch(`${BASE_URL}/users`, {
     headers: {
       'Content-Type': 'application/json',
       Accepts: 'application/json'
@@ -11,7 +13,7 @@ const createUser = (signupObj) => {
 }
 
 const loginUser = (email, password) => {
-  return fetch(`http://localhost:3000/api/v1/auth`, {
+  return fetch(`${BASE_URL}/auth`, {
     headers: {
       'Content-Type': 'application/json',
       Accepts: 'application/json'
@@ -23,12 +25,12 @@ const loginUser = (email, password) => {
 }
 
 const findUser = (id) => {
-  return fetch(`http://localhost:3000/api/v1/users/${id}`)
+  return fetch(`${BASE_URL}/users/${id}`)
   .then(response => response.json())
 }
 
 const getFriendships = (id, token) => {
-  return fetch(`http://localhost:3000/api/v1/users/${id}/friends`, {
+  return fetch(`${BASE_URL}/users/${id}/friends`, {
     headers: {
       'Content-Type': 'application/json',
       Accepts: 'application/json',
@@ -39,7 +41,7 @@ const getFriendships = (id, token) => {
 }
 
 const getCurrentUser = (token) => {
-  return fetch(`http://localhost:3000/api/v1/current_user`, {
+  return fetch(`${BASE_URL}/current_user`, {
     headers: {
       'Content-Type': 'application/json',
       Accepts: 'application/json',
@@ -50,7 +52,7 @@ const getCurrentUser = (token) => {
 }
 
 const getAllUsers = () => {
-  return fetch(`http://localhost:3000/api/v1/users`)
+  return fetch(`${BASE_URL}/users`)
   .then(res => res.json())
 }
 
@@ -62,7 +64,7 @@ const createFriendRequest = (requested_user_id, requester_user_id, token) => {
     }
   }
 
-  return fetch(`http://localhost:3000/api/v1/friend_requests`, {
+  return fetch(`${BASE_URL}/friend_requests`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -75,7 +77,7 @@ const createFriendRequest = (requested_user_id, requester_user_id, token) => {
 }
 
 const getUsersFriendRequest = (id, token) => {
-  return fetch(`http://localhost:3000/api/v1/friend_requests/${id}`, {
+  return fetch(`${BASE_URL}/friend_requests/${id}`, {
     headers: {
       'Content-Type': 'application/json',
       Accepts: 'application/json',
@@ -86,24 +88,31 @@ const getUsersFriendRequest = (id, token) => {
 }
 
 const rejectFriendRequest = (id) => {
-  return fetch(`http://localhost:3000/api/v1/friend_requests/${id}/reject`, {
+  return fetch(`${BASE_URL}/friend_requests/${id}/reject`, {
     method: 'DELETE'
   })
   .then(res => res.json())
 }
 
 const acceptFriendRequest = (id) => {
-  return fetch(`http://localhost:3000/api/v1/friend_requests/${id}/accept`)
+  return fetch(`${BASE_URL}/friend_requests/${id}/accept`)
   .then(res => res.json())
 }
 
 const getMyFriendRequests = (id, token) => {
-  return fetch(`http://localhost:3000/api/v1/my_friend_requests/${id}`, {
+  return fetch(`${BASE_URL}/my_friend_requests/${id}`, {
     headers: {
       'Content-Type': 'application/json',
       Accepts: 'application/json',
       Authorization: token
     }
+  })
+  .then(res => res.json())
+}
+
+const deleteFriend = (id) => {
+  return fetch(`${BASE_URL}/friendships/${id}`, {
+    method: 'DELETE'
   })
   .then(res => res.json())
 }
@@ -119,5 +128,6 @@ export {
   getUsersFriendRequest,
   rejectFriendRequest,
   acceptFriendRequest,
-  getMyFriendRequests
+  getMyFriendRequests,
+  deleteFriend
 }

@@ -28,7 +28,20 @@ export default class FriendInfoCard extends Component {
                 }}>Add Friend</button>
               </div>
             </div>
-             : null }
+             :
+             <div>
+               <div className="ui hidden fitted divider"></div>
+               <div className="ui hidden fitted divider"></div>
+               <div className="ui hidden fitted divider"></div>
+               <div className="ui hidden fitted divider"></div>
+               <div className="ui hidden fitted divider"></div>
+               <div className="ui hidden fitted divider"></div>
+               <div className="ui center aligned">
+                 <button className="negative ui button" onClick={() => {
+                   this.props.deleteFriend(this.props.friend)
+                 }}>Unfriend</button>
+               </div>
+             </div> }
         </div>
       </div>
       <div className="extra content">

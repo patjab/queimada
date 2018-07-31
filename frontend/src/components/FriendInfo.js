@@ -3,14 +3,13 @@ import FriendInfoCard from './FriendInfoCard'
 
 export default class FriendInfo extends Component {
   render() {
-
     return (
       <div className="ui row" style={{"paddingBottom":"30px"}}>
 
         <div className="ui link cards float left">
 
         {Object.keys(this.props.currentFriend).length !== 0 ?
-        <FriendInfoCard friend={this.props.currentFriend} />
+        <FriendInfoCard friend={this.props.currentFriend} deleteFriend={this.props.deleteFriend} />
           :
           <div className="card">
             <div className="ui content centered align massive">
@@ -18,13 +17,11 @@ export default class FriendInfo extends Component {
             </div>
           </div>}
 
-
           <div className="card">
             <div className="image">
               <img src="http://iconshow.me/media/images/ui/ios7-icons/png/512/cloud-upload-outline.png" alt="transmit file"/>
             </div>
           </div>
-
 
           <div className="card">
             <div className="image">
@@ -32,7 +29,6 @@ export default class FriendInfo extends Component {
             </div>
           </div>
         </div>
-
 
       </div>
     )

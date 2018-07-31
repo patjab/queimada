@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react'
 
 export default class FriendCard extends Component {
   currentFriendHandler = () => {
-    this.props.setToCurrentFriend(this.props.friend)
+    this.props.setToCurrentFriend(this.props.friend, this.props.friendshipId)
   }
 
   render() {
