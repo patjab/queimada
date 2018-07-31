@@ -8,7 +8,8 @@ export default class AuthAction extends Component {
       email: "",
       gender: "",
       password: "",
-      password_confirmation: ""
+      password_confirmation: "",
+      avatar: ""
     }
   }
 
@@ -71,6 +72,10 @@ export default class AuthAction extends Component {
             <Fragment>
               <div className="ui row"><label htmlFor="password_confirmation">Password Confirmation</label></div>
               <div className="ui row"><input type="password" name="password_confirmation" value={this.state.password_confirmation} onChange={this.onInputChange}/></div>
+              <div className="ui horizontal divider"></div>
+
+              <div className="ui row"><label htmlFor="avatar">Avatar URL</label></div>
+              <div className="ui row"><input type="text" name="avatar" value={this.state.avatar} onChange={this.onInputChange}/></div>
               <div className="ui horizontal divider"></div>
             </Fragment>
             : null}
