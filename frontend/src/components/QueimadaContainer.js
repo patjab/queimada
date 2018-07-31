@@ -44,7 +44,7 @@ export default class QueimadaContainer extends Component {
           const allUsers = this.props.allUsers
           const allFriends = this.state.currentUserFriendships.map(friendship => friendship.friend)
 
-          if ( allUsers.length > 0 && allFriends.length > 0) {
+          if ( allUsers.length > 0 && allFriends.length >= 0) {
             const allExcludedIds = allFriends.map(friend => friend.id)
             allExcludedIds.push(this.props.currentUser.id)
             allExcludedIds.push(...friendRequestsId1)
@@ -62,10 +62,11 @@ export default class QueimadaContainer extends Component {
   }
 
   render() {
+    console.log(this.props.createdFriendRequest)
     return (
       <div id="QueimadaContainer">
         <FriendsListContainer currentUserFriendships={this.state.currentUserFriendships} currentUser={this.props.currentUser} setToCurrentFriend={this.setToCurrentFriend}/>
-        <InteractiveFriendContainer addNewFriend={this.addNewFriend} deleteFriend={this.unfriend} friendSuggestions={this.state.friendSuggestions} currentFriend={this.state.currentFriend} currentUser={this.props.currentUser} currentUserFriendships={this.state.currentUserFriendships} friendshipsList={this.state.friendshipsList}/>
+        <InteractiveFriendContainer addNewFriend={this.addNewFriend} deleteFriend={this.unfriend} friendSuggestions={this.state.friendSuggestions} currentFriend={this.state.currentFriend} currentUser={this.props.currentUser} currentUserFriendships={this.state.currentUserFriendships}/>
       </div>
     )
   }
