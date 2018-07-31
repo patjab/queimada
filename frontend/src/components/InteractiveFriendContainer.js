@@ -12,5 +12,3 @@ export default class InteractiveFriendContainer extends Component {
     )
   }
 }
-
-// currentUserFriendships={this.props.currentUserFriendships}

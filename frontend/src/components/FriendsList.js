@@ -3,10 +3,6 @@ import FriendCard from './FriendCard'
 import { getFriendships } from '../adapter/adapter'
 
 export default class FriendsList extends Component {
-  // state = {
-  //   friendshipsList: []
-  // }
-
   gatherFriendsIntoElements = () => {
     if (!!this.props.currentUserFriendships) {
       return this.props.currentUserFriendships
@@ -18,13 +14,6 @@ export default class FriendsList extends Component {
       })
     }
   }
-  // componentDidMount() {
-  //   if ( localStorage.getItem('token') && this.props.currentUser) {
-  //     getFriendships(this.props.currentUser.id, localStorage.getItem('token')).then(data => {
-  //       this.setState({friendshipsList: data.friendship})
-  //     })
-  //   }
-  // }
 
   getSearchByName = (searchByName) => {
     this.setState({searchByName})

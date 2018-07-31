@@ -27,7 +27,7 @@ export default class QueimadaContainer extends Component {
         console.log("WHYYYY", this.state.friendSuggestions.filter(friend => friend.id !== this.state.currentFriend.id))
       return {
         currentUserFriendships: this.state.currentUserFriendships.filter(userFriendship => userFriendship.id !== this.state.currentFriendshipId),
-        friendSuggestions: [...this.state.friendSuggestions, this.state.currentFriend], 
+        friendSuggestions: [...this.state.friendSuggestions, this.state.currentFriend],
         currentFriend: {},
         currentFriendshipId: null
       }})
@@ -55,12 +55,6 @@ export default class QueimadaContainer extends Component {
         })
       })
     }
-
-    // if ( localStorage.getItem('token') && this.props.currentUser) {
-    //   getFriendships(this.props.currentUser.id, localStorage.getItem('token')).then(data => {
-    //     this.setState({friendshipsList: data.friendship})
-    //   })
-    // }
   }
 
   setToCurrentFriend = (currentFriend, currentFriendshipId) => {
