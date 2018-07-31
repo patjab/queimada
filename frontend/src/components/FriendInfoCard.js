@@ -10,10 +10,10 @@ export default class FriendInfoCard extends Component {
       <div className="content">
         <div className="header">{this.props.friend.full_name}</div>
         <div className="meta">
-          <a>New York, NY</a>
+          <a>LOCATION, USA</a>
         </div>
         <div className="description">
-          { this.props.friend.full_name} is a user living in New York.
+          { this.props.friend.full_name} is a user living in LOCATION.
           { this.props.isSuggested ?
             <div>
               <div className="ui hidden fitted divider"></div>

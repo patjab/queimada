@@ -15,23 +15,33 @@ class App extends Component {
     currentUser: null,
     errors: null,
     allUsers: [],
-    currentUserFriends: [],
     friendSuggestions: [],
     friendRequests: [], // not the ones user created
     createdFriendRequest: [] // the ones user created
+  }
+
+  compileAllFriendRequestsIntoState = () => {
+    getUsersFriendRequest(this.state.currentUser.id, localStorage.getItem('token'))
+    .then(data => this.setState({friendRequests: data.friend_requests}))
+
+    getMyFriendRequests(this.state.currentUser.id, localStorage.getItem('token'))
+    .then(data => this.setState({createdFriendRequest: data.friend_requests}))
+  }
+
+  setUpLoggedInUser = (data) => {
+    return getCurrentUser(data.token).then(user => {
+      this.setState({currentUser: user.user}, () => {
+        localStorage.setItem('token', data.token)
+        this.props.history.push(`/users`)
+      })
+    })
   }
 
   componentDidMount() {
     getAllUsers().then(allUsers => this.setState({allUsers: allUsers.users}))
     if ( localStorage.getItem('token') ) {
       getCurrentUser(localStorage.getItem('token')).then(user => {
-        this.setState({currentUser: user.user}, () => {
-          getUsersFriendRequest(this.state.currentUser.id, localStorage.getItem('token'))
-          .then(data => this.setState({friendRequests: data.friend_requests}))
-
-          getMyFriendRequests(this.state.currentUser.id, localStorage.getItem('token'))
-          .then(data => this.setState({createdFriendRequest: data.friend_requests}))
-        })
+        this.setState({currentUser: user.user}, this.compileAllFriendRequestsIntoState)
       })
     }
   }
@@ -49,38 +59,16 @@ class App extends Component {
   signUp = (signupObj) => {
     createUser(signupObj)
     .then(data => {
-      if (!data.errors) {
-        getCurrentUser(data.token).then(user => {
-          this.setState({currentUser: user.user}, () => {
-            localStorage.setItem('token', data.token)
-            this.props.history.push(`/users`)
-          })
-        })
-      } else {
-        this.setState({errors: data.errors})
-      }
+      if (!data.errors) { this.setUpLoggedInUser(data) }
+      else { this.setState({errors: data.errors}) }
     })
   }
 
   login = (email, password) => {
     loginUser(email, password)
     .then(data => {
-      if (!data.error) {
-        getCurrentUser(data.token).then(user => {
-          this.setState({currentUser: user.user}, () => {
-            localStorage.setItem('token', data.token)
-            this.props.history.push(`/users`)
-          })
-        }).then(() => {
-          getUsersFriendRequest(this.state.currentUser.id, localStorage.getItem('token'))
-          .then(data => this.setState({friendRequests: data.friend_requests}))
-
-          getMyFriendRequests(this.state.currentUser.id, localStorage.getItem('token'))
-          .then(data => this.setState({createdFriendRequest: data.friend_requests}))
-        })
-      } else {
-        this.setState({errors: data.error})
-      }
+      if (!data.error) { this.setUpLoggedInUser(data).then(this.compileAllFriendRequestsIntoState) }
+      else { this.setState({errors: data.error}) }
     })
   }
 

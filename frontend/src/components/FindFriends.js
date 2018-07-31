@@ -1,7 +1,14 @@
 import React, {Component} from 'react'
 import FriendInfoCard from './FriendInfoCard'
 
+import {getFriendships} from '../adapter/adapter'
+
 export default class FindFriends extends Component {
+
+  // ADDED THIS MORNING
+  componentDidMount() {
+    // getFriendships()
+  }
 
   showRandomCards = () => {
     if (!!this.props.friendSuggestions) {
