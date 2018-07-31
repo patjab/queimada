@@ -13,7 +13,7 @@ export default class FriendInfo extends Component {
         <FriendInfoCard friend={this.props.currentFriend} />
           :
           <div className="card">
-            <div className="content">
+            <div className="ui content centered align massive">
               Please choose a user to get started
             </div>
           </div>}

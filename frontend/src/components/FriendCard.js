@@ -10,7 +10,7 @@ export default class FriendCard extends Component {
       <Fragment>
         <div className="ui row">
         <a className="ui fluid label huge" onClick={this.currentFriendHandler}>
-          <img className="ui right spaced image" src={this.props.friend.avatar} alt={this.props.friend.full_name}/>
+          <img className="ui right spaced image avatar" src={this.props.friend.avatar} alt={this.props.friend.full_name}/>
           {this.props.friend.full_name}
         </a>
         </div>
