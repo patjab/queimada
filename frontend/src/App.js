@@ -17,7 +17,7 @@ class App extends Component {
     allUsers: [],
     friendSuggestions: [],
     friendRequests: [], // not the ones user created
-    createdFriendRequest: [] // the ones user created
+    createdFriendRequest: [],  // the ones user created
   }
 
   compileAllFriendRequestsIntoState = () => {
