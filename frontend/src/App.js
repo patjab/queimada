@@ -59,6 +59,8 @@ class App extends Component {
   signUp = (signupObj) => {
     createUser(signupObj)
     .then(data => {
+      console.log(data)
+      console.log(data.errors)
       if (!data.errors) { this.setUpLoggedInUser(data) }
       else { this.setState({errors: data.errors}) }
     })

@@ -24,7 +24,6 @@ export default class AuthAction extends Component {
   submitHandler = (e) => {
     e.preventDefault()
     this.props.submitAuthAction(this.state)
-    // Now onto logging in the person who just signed up
   }
 
   displayErrors = () => {

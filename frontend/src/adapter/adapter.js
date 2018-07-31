@@ -1,6 +1,8 @@
 const BASE_URL = `http://localhost:3000/api/v1`
-
+const DEFAULT_AVATAR = `https://pbs.twimg.com/profile_images/824716853989744640/8Fcd0bji_400x400.jpg`
 const createUser = (signupObj) => {
+  !signupObj.avatar ? signupObj.user.avatar = DEFAULT_AVATAR : null
+
   return fetch(`${BASE_URL}/users`, {
     headers: {
       'Content-Type': 'application/json',
