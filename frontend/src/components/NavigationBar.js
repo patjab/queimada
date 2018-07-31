@@ -46,12 +46,39 @@ export default class NavigationBar extends Component {
 
             </div>
 
-              <a className="item" href='/users'>Home</a>
-              <a className="item">Settings</a>
-              <a className="item">Messages</a>
-              <a className="item">Help</a>
-              <a className="item" onClick={this.props.logout}>Logout</a>
-              <a className="item">Logged In: {this.props.currentUser.full_name}</a>
+            <a className="item" href='/users'>Home</a>
+            <a className="item">Settings</a>
+            <a className="item">Messages</a>
+            <a className="item">Help</a>
+            <a className="item" onClick={this.props.logout}>Logout</a>
+
+            <div className="ui compact menu inverted">
+              <div className="ui simple dropdown item">
+                Logged In: {this.props.currentUser.full_name}
+
+                <div className="menu">
+                  <div className="ui item huge">
+                    <div className="ui left float">
+                      <img src={this.props.currentUser.avatar} alt={this.props.currentUser.full_name}/>
+                    </div>
+                    <div style={{"text-align":"center","font-size":"24px","padding":"10px"}}>
+                      {this.props.currentUser.full_name}
+                    </div>
+                    <div style={{"text-align":"center","font-size":"24px","padding":"10px"}}>
+                      <div>
+                        <div className="ui buttons">
+                          <button className="ui button blue active">Settings</button>
+                          <div className="or"></div>
+                          <button className="ui purple button" onClick={this.props.logout}>Logout</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
             </Fragment>
             :
             <Fragment>
