@@ -39,53 +39,6 @@ puts " Barack Obama ID: #{barack_obama.id}"
 puts " George Bush ID: #{george_bush.id}"
 puts " Dwight Eisenhower ID: #{dwight_eisenhower.id}"
 
-# FriendRequest.create(requested_user_id: barack_obama.id, requester_user_id: george_bush.id)
-# FriendRequest.create(requested_user_id: bill_clinton.id, requester_user_id: george_bush.id)
-# FriendRequest.create(requested_user_id: george_hw_bush.id, requester_user_id: george_bush.id)
-# FriendRequest.create(requested_user_id: ronald_reagan.id, requester_user_id: george_bush.id)
-# FriendRequest.create(requested_user_id: jimmy_carter.id, requester_user_id: george_bush.id)
-#
-# FriendRequest.create(requested_user_id: bill_clinton.id, requester_user_id: barack_obama.id)
-# FriendRequest.create(requested_user_id: jimmy_carter.id, requester_user_id: barack_obama.id)
-# FriendRequest.create(requested_user_id: laura_bush.id, requester_user_id: barack_obama.id)
-# FriendRequest.create(requested_user_id: hillary_clinton.id, requester_user_id: barack_obama.id)
-# FriendRequest.create(requested_user_id: john_kennedy.id, requester_user_id: barack_obama.id)
-# FriendRequest.create(requested_user_id: jackie_kennedy.id, requester_user_id: barack_obama.id)
-# FriendRequest.create(requested_user_id: michelle_obama.id, requester_user_id: barack_obama.id)
-#
-#
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: michelle_obama.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: george_bush.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: laura_bush.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: bill_clinton.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: hillary_clinton.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: george_hw_bush.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: barbara_bush.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: ronald_reagan.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: nancy_reagan.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: jimmy_carter.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: rosalynn_carter.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: gerald_ford.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: betty_ford.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: richard_nixon.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: pat_nixon.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: lyndon_johnson.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: lady_bird_johnson.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: john_kennedy.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: jackie_kennedy.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: dwight_eisenhower.id)
-# FriendRequest.create(requester_user_id: barack_obama.id, requested_user_id: mamie_eisenhower.id)
-#
-#
-# FriendRequest.create(requested_user_id: dwight_eisenhower.id, requester_user_id: john_kennedy.id)
-# FriendRequest.create(requested_user_id: lyndon_johnson.id, requester_user_id: john_kennedy.id)
-# FriendRequest.create(requested_user_id: richard_nixon.id, requester_user_id: john_kennedy.id)
-# FriendRequest.create(requested_user_id: gerald_ford.id, requester_user_id: john_kennedy.id)
-# FriendRequest.create(requested_user_id: jimmy_carter.id, requester_user_id: john_kennedy.id)
-# FriendRequest.create(requested_user_id: ronald_reagan.id, requester_user_id: john_kennedy.id)
-# FriendRequest.create(requested_user_id: george_hw_bush.id, requester_user_id: john_kennedy.id)
-
-
 puts "Created FriendRequests"
 
 Friendship.create(user_id: george_bush.id, friend_id: barack_obama.id)

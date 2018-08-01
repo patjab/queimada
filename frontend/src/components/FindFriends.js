@@ -21,7 +21,7 @@ export default class FindFriends extends Component {
     return (
       <div className="row" id="FindFriends">
         <h1 className="ui huge header">Suggested Friends</h1>
-        <div className="ui link cards float left">
+        <div className="ui link cards float left active content">
           {this.showRandomCards()}
         </div>
       </div>
