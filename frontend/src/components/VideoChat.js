@@ -7,16 +7,15 @@ import SimpleWebRTC from 'simplewebrtc'
 export default class VideoChat extends Component {
   componentDidMount() {
     if (this.props.currentUser && Object.keys(this.props.currentFriend).length !== 0) {
-      let username = this.props.currentUser.full_name + this.props.currentUser.id
-      let roomName = [this.props.currentUser, this.props.currentFriend].sort().join("")
+      let username = this.props.currentUser.email
+      let roomName = [this.props.currentUser.email, this.props.currentFriend.email].sort().join("")
+
+      console.log("YOUR USERNAME WILL BE ", username)
+      console.log("THE ROOM NAME WILL BE ", roomName)
 
       const localVideoEl = $('#local-video');
       const remoteVideoTemplate = Handlebars.compile($('#remote-video-template').html());
       const remoteVideosEl = $('#remote-videos');
-
-      $('#local-video').on('click', (e) => {
-        console.log("HEY", e)
-      })
 
       const webrtc = new SimpleWebRTC({
         localVideoEl: 'local-video',
@@ -28,10 +27,7 @@ export default class VideoChat extends Component {
         localVideoEl.show();
       });
 
-      console.log("OUTSIDE CLICK")
-
       $('#join-btn').on('click', (event) => {
-        console.log("INSIDE CLICK")
         webrtc.joinRoom(roomName);
         $(`#join-btn`).remove()
         return false;
@@ -45,12 +41,6 @@ export default class VideoChat extends Component {
         $(`#${id}`).addClass('ui image small'); // Make video element responsive
       });
     }
-  }
-
-
-
-  joinPrep = (e) => {
-    alert("WHY")
   }
 
   render() {

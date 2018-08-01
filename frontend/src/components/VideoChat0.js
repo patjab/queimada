@@ -1,7 +1,4 @@
 import React, {Fragment, Component} from 'react'
-import App from './App'
-import { BrowserRouter } from 'react-router-dom'
-import registerServiceWorker from './registerServiceWorker'
 
 import $ from 'jquery'
 import Handlebars from 'handlebars'
@@ -9,10 +6,10 @@ import SimpleWebRTC from 'simplewebrtc'
 
 export default class VideoChat extends Component {
   componentDidMount() {
-      let username = this.props.currentUser
-      let roomName = this.props.friendshipId
+    if (this.props.currentUser && Object.keys(this.props.currentFriend).length !== 0) {
+      let username = this.props.currentUser.full_name + this.props.currentUser.id
+      let roomName = [this.props.currentUser, this.props.currentFriend].sort().join("")
 
-      const localImageEl = $('#local-image');
       const localVideoEl = $('#local-video');
       const remoteVideoTemplate = Handlebars.compile($('#remote-video-template').html());
       const remoteVideosEl = $('#remote-videos');
@@ -24,11 +21,10 @@ export default class VideoChat extends Component {
       });
 
       webrtc.on('localStream', () => {
-        localImageEl.hide();
         localVideoEl.show();
       });
 
-      $('.submit').on('click', (event) => {
+      $('#join-btn').on('click', (event) => {
         webrtc.joinRoom(roomName);
         $(`#join-btn`).remove()
         return false;
@@ -41,6 +37,7 @@ export default class VideoChat extends Component {
         $(`#${id}`).html(video);
         $(`#${id}`).addClass('ui image small'); // Make video element responsive
       });
+    }
   }
 
   render() {
@@ -48,7 +45,10 @@ export default class VideoChat extends Component {
       <span id="allVideos" className="video-container">
         <video id="local-video" className="ui big image hidden" autoplay></video>
         <div className="overlay-desc">
-          <button id="join-btn" className="ui submit green massive transparent button" style={{"opacity":"0.6"}}>Connect</button>
+          { (this.props.currentUser && Object.keys(this.props.currentFriend).length !== 0) ?
+              <button id="join-btn" className="ui submit green massive transparent button" style={{"opacity":"0.6"}}>Call {this.props.currentFriend.full_name}</button>
+                : null
+          }
         </div>
         <div className="overlay-desc-2">
           <span id="remote-videos" className="ui big small"></span>
