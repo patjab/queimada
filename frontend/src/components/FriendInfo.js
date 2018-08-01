@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import FriendInfoCard from './FriendInfoCard'
+import VideoChat from './VideoChat'
 
 export default class FriendInfo extends Component {
   render() {
+    console.log(!!this.props.currentFriend && !!this.props.currentUser)
     return (
       <div className="ui row" style={{"paddingBottom":"30px"}}>
 
@@ -17,17 +19,13 @@ export default class FriendInfo extends Component {
             </div>
           </div>}
 
-          <div className="card">
-            <div className="image">
-              <img src="http://iconshow.me/media/images/ui/ios7-icons/png/512/cloud-upload-outline.png" alt="transmit file"/>
-            </div>
+          <div>
+            {(this.props.currentUser && Object.keys(this.props.currentFriend).length !== 0) ?
+            <VideoChat currentFriend={this.props.currentFriend} currentUser={this.props.currentUser}/>
+            : null}
           </div>
 
-          <div className="card">
-            <div className="image">
-              <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/16186-200.png" alt="video chat"/>
-            </div>
-          </div>
+
         </div>
 
       </div>

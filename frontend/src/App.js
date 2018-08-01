@@ -79,16 +79,15 @@ class App extends Component {
 
   render() {
     return (
-
-        <Fragment>
-          <NavigationBar friendRequests={this.state.friendRequests} logout={this.logout} currentUser={this.state.currentUser} onReject={this.onReject} onAccept={this.onAccept}/>
-          <Switch>
-            <Route path='/signup' render={() => <AuthAction submitAuthAction={this.signUp} authType='signup' errors={this.state.errors}/>}/>
-            <Route path='/login' render={() => <AuthAction submitAuthAction={this.login} authType='login' errors={this.state.errors}/>}/>
-            <Route path='/' component={() => <QueimadaContainer allUsers={this.state.allUsers} currentUser={this.state.currentUser} friendRequests={this.state.friendRequests} createdFriendRequest={this.state.createdFriendRequest}/>}/>
-          </Switch>
-        </Fragment>
-    );
+      <Fragment>
+        <NavigationBar friendRequests={this.state.friendRequests} logout={this.logout} currentUser={this.state.currentUser} onReject={this.onReject} onAccept={this.onAccept}/>
+        <Switch>
+          <Route path='/signup' render={() => <AuthAction submitAuthAction={this.signUp} authType='signup' errors={this.state.errors}/>}/>
+          <Route path='/login' render={() => <AuthAction submitAuthAction={this.login} authType='login' errors={this.state.errors}/>}/>
+          <Route path='/' component={() => <QueimadaContainer allUsers={this.state.allUsers} currentUser={this.state.currentUser} friendRequests={this.state.friendRequests} createdFriendRequest={this.state.createdFriendRequest}/>}/>
+        </Switch>
+      </Fragment>
+    )
   }
 }
 

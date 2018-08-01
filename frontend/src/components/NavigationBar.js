@@ -61,10 +61,10 @@ export default class NavigationBar extends Component {
                     <div className="ui left float">
                       <img src={this.props.currentUser.avatar} alt={this.props.currentUser.full_name}/>
                     </div>
-                    <div style={{"text-align":"center","font-size":"24px","padding":"10px"}}>
+                    <div style={{"textAlign":"center","fontSize":"24px","padding":"10px"}}>
                       {this.props.currentUser.full_name}
                     </div>
-                    <div style={{"text-align":"center","font-size":"24px","padding":"10px"}}>
+                    <div style={{"textAlign":"center","fontSize":"24px","padding":"10px"}}>
                       <div>
                         <div className="ui buttons">
                           <button className="ui button blue active">Settings</button>

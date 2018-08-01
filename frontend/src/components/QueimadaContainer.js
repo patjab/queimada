@@ -24,7 +24,6 @@ export default class QueimadaContainer extends Component {
     deleteFriend(this.state.currentFriendshipId)
     .then(data => {
       this.setState(prevState => {
-        console.log("WHYYYY", this.state.friendSuggestions.filter(friend => friend.id !== this.state.currentFriend.id))
       return {
         currentUserFriendships: this.state.currentUserFriendships.filter(userFriendship => userFriendship.id !== this.state.currentFriendshipId),
         friendSuggestions: [...this.state.friendSuggestions, this.state.currentFriend],
@@ -62,7 +61,6 @@ export default class QueimadaContainer extends Component {
   }
 
   render() {
-    console.log(this.props.createdFriendRequest)
     return (
       <div id="QueimadaContainer">
         <FriendsListContainer currentUserFriendships={this.state.currentUserFriendships} currentUser={this.props.currentUser} setToCurrentFriend={this.setToCurrentFriend}/>
