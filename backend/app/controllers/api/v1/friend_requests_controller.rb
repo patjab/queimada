@@ -6,6 +6,11 @@ class Api::V1::FriendRequestsController < ApplicationController
     render json: @friend_requests
   end
 
+  def friend_requests
+    @my_fr = FriendRequest.where(requester_user_id: params[:id])
+    render json: @my_fr
+  end
+
   def create
     @friend_request = FriendRequest.new(friend_request_params)
     if @friend_request.save

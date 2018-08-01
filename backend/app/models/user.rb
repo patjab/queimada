@@ -1,7 +1,9 @@
 class User < ApplicationRecord
-  validates :first_name, :last_name, :email, :gender, :password_digest, presence: true
-  validates :email, uniqueness: true
   has_secure_password
+
+  # MESSAGE TO PABLO FROM PATRICK: added password_confirmation to the validation
+  validates :first_name, :last_name, :email, :gender, :password, :password_confirmation, presence: true
+  validates :email, uniqueness: true
   has_many :friend_requests, :foreign_key => :requested_user_id
   has_many :friendships
   has_many :friends, through: :friendships, :foreign_key => :friend_id, class_name: "User"

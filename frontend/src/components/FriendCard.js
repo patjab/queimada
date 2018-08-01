@@ -1,18 +1,21 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 
 export default class FriendCard extends Component {
+  currentFriendHandler = () => {
+    this.props.setToCurrentFriend(this.props.friend, this.props.friendshipId)
+  }
+
   render() {
     return (
-      <div className="column">
-        <img className="ui centered small circular image" src="https://i.pinimg.com/originals/65/9a/1a/659a1ad8192a29456d58a5bbb6520eb6.jpg"/>
-        <div className="ui hidden divider"></div>
-        <div className="ui large red label">
-          Selena Gomez
+      <Fragment>
+        <div className="ui row">
+        <a className="ui fluid label huge" onClick={this.currentFriendHandler}>
+          <img className="ui right spaced image avatar" src={this.props.friend.avatar} alt={this.props.friend.full_name}/>
+          {this.props.friend.full_name}
+        </a>
         </div>
-        <p>
-          Something else
-        </p>
-      </div>
+        <div className="ui row big"></div>
+      </Fragment>
     )
   }
 }
