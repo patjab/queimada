@@ -7,11 +7,11 @@ Queimada is a social network with video chatting, and file sharing capabilities.
 - React (Single Page Application - SPA)
 - HTML5, CSS3, ECMAScript 6 and Jquery
 - Semantic UI
-- JWT (token cryptography)
+- JWT (token encryption)
 - Postegresql
 - Websockets
 - WebRTC
 - Node.JS (Signaling and Message Exchange servers)
 
 
-Developed by Pablo and Patrick.
+Developed by [I'm an inline-style link with title](mailto:prm.gredes@gmail.com)Pablo and [Patrick](mailto:wireless.patrick@gmail.com).
