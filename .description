@@ -1,0 +1,1 @@
+Queimada is a social network with video chatting, and file sharing capabilities. WebRTC is the core API in this project for peer-to-peer connections over the Internet; By using it we enable our application to have direct streamings, this is a good way of reducing latency during transmissions because there is no middleman.
