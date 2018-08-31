@@ -20,6 +20,8 @@ export default class VideoChat extends Component {
         autoRequestMedia: true,
       });
 
+      console.log(webrtc)
+
       webrtc.on('localStream', () => {
         localVideoEl.show();
       });
