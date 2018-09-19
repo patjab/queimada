@@ -5,7 +5,7 @@ Queimada is a social network with video chatting, and file sharing capabilities.
 ## Stack
 - Ruby on Rails (Restful API)
 - React (Single Page Application - SPA)
-- Node.JS (Signaling and Message Exchange servers)
+- Node.JS (Signaling and Messaging servers)
 - WebRTC
 - HTML5, CSS3, ECMAScript 6 and Jquery
 - Semantic UI
